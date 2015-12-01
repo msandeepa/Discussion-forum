@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+{% block title %}Home page{% endblock %}
+{% block head %}{% endblock %}
+{% block content %}
+    <!-- <p>Welcome {{ user.username }} !!!</p> -->
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/bootstrap-theme.min.css' %}" />
+<script type="text/javascript" src="{{ STATIC_URL }}https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+<script type="text/javascript" src = "{{ STATIC_URL }}js/jquery.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" >
+      $(document).ready(function()
+      {
+      $("#notificationLink").click(function()
+      {
+      $("#notificationContainer").fadeToggle(300);
+      $("#notification_count").fadeOut("slow");
+      return false;
+      });
+
+      //Document Click
+
+      $(document).click(function()
+      {
+      $("#notificationContainer").hide();
+      });
+      
+      //Popup Click
+
+      $("#notificationContainer").click(function()
+      {
+      return false
+      });
+
+      });
+    </script>
+        <style>
+      .badge {
+        background: red;
+      }
+      .txt {
+        font-size: 200%;
+        padding-left: 10%;
+      }
+      .h {
+        text-align: center;
+      }
+
+      #notification_li {
+        position:relative
+      }
+      
+      #notificationContainer {
+        background-color: #fff;
+        border: 1px solid rgba(100, 100, 100, .4);
+        -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+        overflow: visible;
+        position: absolute;
+        top: 42px;
+        margin-left: -150px;
+        width: 320px;
+        z-index: 10;
+        display: none;
+      }
+
+      #notificationContainer:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        color: transparent;
+        border: 10px solid black;
+        border-color: transparent transparent white;
+        margin-top: -20px;
+        margin-left: 158px;
+      }
+
+      #notificationTitle {
+        font-weight: bold;
+        padding: 8px;
+        font-size: 13px;
+        background-color: #ffffff;
+        width: 300px;
+        border-bottom: 1px solid #dddddd;
+      }
+
+      #notificationsBody {
+        padding: 33px 0px 0px 0px !important;
+        min-height:300px;
+      }
+
+      #notificationFooter {
+        background-color: #e9eaed;
+        text-align: center;
+        font-weight: bold;
+        padding: 8px;
+        font-size: 12px;
+        border-top: 1px solid #dddddd;
+      }
+
+      #notification_count {
+        padding: 3px 7px 3px 7px;
+        background: #cc0000;
+        color: #ffffff;
+        font-weight: bold;
+        margin-left: 20px;
+        border-radius: 9px;
+        position: absolute;
+        font-size: 10px;
+      }
+    </style>
+<head>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title> Home page </title>
+
+	</head>
+
+	<body>
+<div class="container-fluid">
+      <div class = "row">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">MSIT Discussion Forum</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right ">
+              <li><a href="/askquestion/" class="btn btn-lg" data-toggle="modal" 
+              data-target="#basicModal">Ask a Question <span class = " glyphicon glyphicon-question-sign"></span></a>
+              <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+              <div class="modal-dialog">
+              <div class="modal-content">
+              
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title" id="myModalLabel">Ask a Question</h4>
+              </div>
+              
+              <div class="modal-body">
+                  <!--Modal Body-->
+                <br>
+                <div>
+                  <b> Select Subject: </b>
+                  &nbsp;&nbsp;&nbsp;
+                  <input ID="subject" class="form-control" id="inputname" placeholder="subject">
+                </div>
+                <br>
+                <div class = "form-group input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+                  <input ID="Question" class="form-control" id="inputname" placeholder="Enter your question here?">
+                </div>
+                
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+                
+              </div>
+          </div>
+          </div>
+          </div>
+
+            </li>
+              
+              <!-- <li><a href = "#"><span class = "glyphicon glyphicon-comment"></span><span class = "badge">3</span></a></li> --> 
+              <li id = "notification_li">
+                <span id = "notification_count">3</span>
+                <a href = "#" id = "notificationLink"><span class = "glyphicon glyphicon-bell"></span></a>
+                <div id = "notificationContainer">
+                  <div id = "notificationTitle"><center>Notifications</center></div>
+                  <div id = "notificationsBody" class = "notifications"></div>
+                  <div id = "notificationFooter"><a href = "#">See All</a></div>
+                </div>
+              </li>
+
+              <li><a href="/home">Home <span class="glyphicon glyphicon-home"></span></a></li>
+              
+              <li class="dropdown pull-right">
+                
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">{{ user.username }}<b class="caret"></b></a>
+                
+                <ul class="dropdown-menu">
+                    <li><a href="/Profilepage"><span class = "glyphicon glyphicon-globe"></span> Profile</a></li>
+                    <li><a href="#"><span class = "glyphicon glyphicon-cog"></span> Settings</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/logout/"><span class = "glyphicon glyphicon-off"></span>Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+     <div class="container-fluid">
+      
+      <div class="row row-offcanvas row-offcanvas-left">
+        
+         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+           
+            <ul class="nav nav-sidebar">
+              <li><a href="/General/">General <span class = "badge b">3</span></a></li>
+              <li><a href="/rome/">#DataStructures <span class = "badge b">1</span></a></li>
+              <li><a href="/wp/">#WebProgramming <span class = "badge b">2</span></a></li>
+              <li><a href="/java/">#Java <span class = "badge b">30</span></a></li>
+              <li><a href="/dbms/">#DBMS <span class = "badge b">50</span></a></li>
+            </ul>
+            
+        </div>
+        
+        <div class="col-sm-9 col-md-10 main">
+
+          <p class="visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+          </p>
+          
+      <h1 class = "h">Discussion Forum</h1>
+      </div>
+{% for post in latest_question_list %}
+        <div>
+            <div>
+        {{post.author}}
+        <br>
+                {{ post.question }}
+                <hr>
+            </div>
+            
+        </div>
+{% endfor %}
+
+  </div>
+</div>
+    </div>    
+  </body> 	
+{% endblock %}

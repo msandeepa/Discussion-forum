@@ -1,0 +1,130 @@
+
+	<head>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title> Home page </title>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/bootstrap-theme.min.css' %}" />
+<script type="text/javascript" src="{{ STATIC_URL }}https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+<script type="text/javascript" src = "{{ STATIC_URL }}js/jquery.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  	<style>
+  		.badge {
+  			background: red;
+  		}
+      .txt {
+        font-size: 200%;
+        padding-left: 10%;
+      }
+      .h {
+        text-align: center;
+      }
+      .img {
+        padding-left: 10%;
+      }
+  	</style>
+
+	</head>
+
+	<body>
+		<div class="container-fluid">
+    	<div class = "row">
+      	<nav class="navbar navbar-inverse">
+        	<div class="container-fluid">
+          	<div class="navbar-header">
+            	<a class="navbar-brand" href="#">WebSiteName</a>
+          	</div>
+
+          	<ul class="nav navbar-nav navbar-right ">
+          		<li><a href="/askquestion/" class="btn btn-lg" data-toggle="modal" 
+              data-target="#basicModal">Ask a Question <span class = " glyphicon glyphicon-question-sign"></span></a>
+              <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+              <div class="modal-dialog">
+              <div class="modal-content">
+              
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title" id="myModalLabel">Ask a Question</h4>
+              </div>
+              
+              <div class="modal-body">
+                  <!-- <h3>Modal Body</h3> -->
+                <br>
+                <div>
+                  <b> Select Subject: </b>
+                  &nbsp;&nbsp;&nbsp;
+                  <select name="bname">
+                  <option value="select">Select</option>
+                  <option value="HTML">HTML</option>
+                  <option value="DS">DS</option>
+                  </select>
+                </div>
+                <br>
+                <div class = "form-group input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+                  <input ID="Question" class="form-control" id="inputname" placeholder="Enter your question here?">
+                </div>
+                
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+              </div>
+          </div>
+          </div>
+          </div>
+
+            </li>
+            	
+              <li><a href = "#"><span class = "glyphicon glyphicon-comment"></span><span class = "badge">3</span></a></li> 
+            	
+              <li><a href="/home">Home <span class="glyphicon glyphicon-home"></span></a></li>
+            	
+              <li class="dropdown pull-right">
+            		
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">{{ user.username }}<b class="caret"></b></a>
+		            
+                <ul class="dropdown-menu">
+		                <li><a href="profilepage.html">Profile</a></li>
+		                <li><a href="#"><span class = "glyphicon glyphicon-cog"></span> Settings</a></li>
+		                <li class="divider"></li>
+		                <li><a href="MyLoginPage.html"><span class = "glyphicon glyphicon-off"></span> Logout</a></li>
+		            </ul>
+        			</li>
+          	</ul>
+        	</div>
+      	</nav>
+    	</div>
+
+    <div class="container-fluid">
+      
+      <div class="row row-offcanvas row-offcanvas-left">
+        
+         <div class="col-sm-4 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+           
+            <ul class="nav nav-sidebar">
+              <li><a href="#">General <span class = "badge b">3</span></a></li>
+              <li><a href="#">#DataStructures <span class = "badge b">1</span></a></li>
+              <li><a href="#">#WebProgramming <span class = "badge b">2</span></a></li>
+              <li><a href="#">#Java <span class = "badge b">30</span></a></li>
+              <li><a href="#">#DBMS <span class = "badge b">50</span></a></li>
+            </ul>
+            
+        </div>
+        
+        <div class="col-sm-9 col-md-10 main">
+          <h1 class = "h">Discussion Forum</h1>
+          <!-- <img src="dp.jpg" class = "img"> -->
+          <h class = "img">How to use django framework??<h>
+        </div>
+    </div>
+</div>
+  	</div>  	
+	</body>

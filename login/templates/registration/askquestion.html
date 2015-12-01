@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Home page{% endblock %}
+{% block head %}{% endblock %}
+{% block content %}
+<form action="/submit/" method="post"> {% csrf_token %}
+	{{ form }}
+    <input type="submit" value="submit">
+</form>
+{% endblock %}<!-- 
+{{ forms.questionForm }}
+    <label class="sr-only" for="subject">select subject</label>
+    <input type="text" class="form-control" id="subject" placeholder="subject">
+    {{ form.subject }}
+    <label class="sr-only" for="queston">Question</label>
+    <input type="text" class="form-control" id="inputname" placeholder="Enter your question here?">
+    <!-- {{ form.question }} --> --sss>
